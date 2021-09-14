@@ -1,7 +1,7 @@
 import React from 'react'
-import './index.css'
+import GithubData from './GithubData'
 
-function App() {
+const App = () => {
   return <div className="App">Search Github Repositories</div>
 }
 
