@@ -1,12 +1,15 @@
 import GithubData from './GithubData'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
+  const [githubUserName, setGithubUserName] = useState('')
+
   useEffect(() => {
     const gitHubDataQuery = {
       query: `
     {
         viewer {
+            name
           repositories(privacy: PUBLIC, last: 10) {
             totalCount
             nodes {
@@ -24,7 +27,8 @@ const App = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.data.viewer.repositories.nodes)
+        setGithubUserName(data.data.viewer.name)
+        console.log(data.data.viewer.name)
       })
       .catch(error => {
         console.log(error)
@@ -34,6 +38,7 @@ const App = () => {
   return (
     <div className="container">
       <h1 className="repositories-heading">Repositories list</h1>
+          <p>This is {githubUserName.trim() + "'s"} Github repository</p>
     </div>
   )
 }
