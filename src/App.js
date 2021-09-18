@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import GithubData from './GitHubData/GithubData.jsx'
-import githubDataQuery from './GithubQuery/GithubQuery.jsx'
+import GithubData from './GithubData.jsx'
+import githubDataQuery from './GithubQuery'
 import './App.css'
 
 const App = () => {
