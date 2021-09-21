@@ -1,4 +1,4 @@
-.github-repo-list  {
+.github-repo-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -6,10 +6,10 @@
   justify-content: center;
 }
 
-.github-repo-list-items  {
+.github-repo-list-items {
   border: 2px solid black;
 }
 
-.github-repo-titles  {
+.github-repo-title {
   margin: 20px 10px 20px 10px;
 }
