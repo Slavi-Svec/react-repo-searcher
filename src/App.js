@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import GithubData from './GithubData.js'
-import githubDataQuery from './GithubQuery'
+import githubDataQuery from './GithubDataQuery'
 import './App.css'
 
 const App = () => {
@@ -22,33 +22,26 @@ const App = () => {
       .catch(error => {
         console.log(error)
       })
-  }, [githubReposList])
+  }, [])
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [fetchData])
 
   return (
     <div className="container">
-             <h1 className="repositories-heading">Repositories list</h1>
-            
+      <h1 className="repositories-heading">Repositories list</h1>
       {githubUserName && (
         <p>This is {`${githubUserName.trim()}'s`} Github repository</p>
       )}
-            
       <ul className="github-repo-list">
-                
         <li className="github-repo-list-items">
-                    
           {githubReposList &&
             githubReposList.map(user => (
               <div className="github-repo-titles">{user.name}</div>
             ))}
-                  
         </li>
-              
       </ul>
-          
     </div>
   )
 }
