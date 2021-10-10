@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import githubData from './GithubData/GithubData'
+import githubData from './GithubData'
 import githubDataQuery from './GithubDataQuery'
 import './App.css'
 
