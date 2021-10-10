@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import githubData from './GithubData'
+// import githubData from './GithubData'
 import githubDataQuery from './GithubDataQuery'
 import './App.css'
 
@@ -7,26 +7,25 @@ const App = () => {
   const [githubUserName, setGithubUserName] = useState('')
   const [githubReposList, setGithubReposList] = useState('')
 
-  const fetchData = useCallback(() => {
-    fetch(githubData.baseURL, {
-      method: 'POST',
-      headers: githubData.headers,
-      body: JSON.stringify(githubDataQuery)
-    })
-      .then(response => response.json())
-      .then(data => {
-        setGithubUserName(data.data.viewer.name)
-        setGithubReposList(data.data.viewer.repositories.nodes)
-        console.log(data.data.viewer.repositories.nodes[0].name)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
+  //   const fetchData = useCallback(() => {
+  //     fetch(githubData.baseURL, {
+  //       method: 'POST',
+  //       headers: githubData.headers,
+  //       body: JSON.stringify(githubDataQuery)
+  //     })
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         setGithubUserName(data.data.viewer.name)
+  //         setGithubReposList(data.data.viewer.repositories.nodes)
+  //       })
+  //       .catch(error => {
+  //         console.log(error)
+  //       })
+  //   }, [])
 
-  useEffect(() => {
-    fetchData()
-  }, [fetchData])
+  //   useEffect(() => {
+  //     fetchData()
+  //   }, [fetchData])
 
   return (
     <div className="container">
