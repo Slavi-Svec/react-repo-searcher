@@ -1,23 +1,23 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import GithubData from './GithubData.js'
+import githubData from './GithubData'
 import githubDataQuery from './GithubDataQuery'
 import './App.css'
 
 const App = () => {
   const [githubUserName, setGithubUserName] = useState('')
-  const [githubReposList, setGithubReposList] = useState([])
+  const [githubReposList, setGithubReposList] = useState('')
 
   const fetchData = useCallback(() => {
-    fetch(GithubData.baseURL, {
+    fetch(githubData.baseURL, {
       method: 'POST',
-      headers: GithubData.headers,
+      headers: githubData.headers,
       body: JSON.stringify(githubDataQuery)
     })
       .then(response => response.json())
       .then(data => {
         setGithubUserName(data.data.viewer.name)
         setGithubReposList(data.data.viewer.repositories.nodes)
-        console.log(data.data.viewer.repositories.nodes)
+        console.log(data.data.viewer.repositories.nodes[0].name)
       })
       .catch(error => {
         console.log(error)
@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1 className="repositories-heading">Repositories list</h1>
+       <h1 className="repositories-heading">Repositories list</h1>
       {githubUserName && (
         <p>This is {`${githubUserName.trim()}'s`} Github repository</p>
       )}

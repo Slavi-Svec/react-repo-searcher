@@ -1,19 +1,18 @@
 const githubDataQuery = {
   query: `
-        {
-          viewer {
-            name
-              repositories(privacy: PUBLIC, last:20) {
-                nodes {
-                name
-                description
-                id
-                url
-              }
-            }
-          }
-        }
-      `
+    {
+      viewer {
+        name
+          repositories(privacy: PUBLIC, last: 10) {
+                  nodes {
+                    name
+                    url
+                    description
+                  }
+           }
+      }
+    }
+  `
 }
 
 export default githubDataQuery
