@@ -1,20 +1,50 @@
-.github-repo-list {
-  list-style: none;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid red;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.github-repo-avatar {
+  width: 300px;
 }
 
 .github-repo-list-items {
   border: 2px solid black;
+  list-style: none;
 }
 
 .github-repo-titles {
-  margin: 20px 10px 20px 10px;
+  /* margin: 20px 10px 20px 10px; */
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
-  border: 2px solid red;
+}
+
+.github-repo-description {
+  margin: 10px 0 10px 0;
+  border: 2px solid black;
+}
+
+.github-repo-url {
+  text-decoration: none;
+  color: black;
+  text-align: left;
+}
+.github-repo-url:visited {
+  text-decoration: none;
+}
+.github-repo-url:hover {
+  text-decoration: none;
+  color: red;
+}
+.github-repo-url:focus {
+  text-decoration: none;
+}
+.github-repo-url:hover .github-repo-url:active {
+  text-decoration: none;
 }

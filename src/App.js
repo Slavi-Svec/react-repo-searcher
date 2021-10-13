@@ -6,7 +6,7 @@ import './App.css'
 const App = () => {
   const [githubUserName, setGithubUserName] = useState('')
   const [githubReposList, setGithubReposList] = useState('')
-  //   const [githubDescription, setGithubDescription] = useState('')
+  const [avatarImage, setAvatarImage] = useState('')
 
   const fetchData = useCallback(() => {
     fetch(githubData.baseURL, {
@@ -18,8 +18,8 @@ const App = () => {
       .then(data => {
         setGithubUserName(data.data.viewer.name)
         setGithubReposList(data.data.viewer.repositories.nodes)
-        // setGithubDescription ()
-        console.log(data.data.viewer.repositories.nodes)
+        setAvatarImage(data.data.viewer.avatarUrl)
+        console.log(data.data.viewer.avatarUrl)
       })
       .catch(error => {
         console.log(error)
@@ -33,19 +33,29 @@ const App = () => {
   return (
     <div className="container">
       <h1 className="repositories-heading">Repositories list</h1>
+      {avatarImage && (
+        <img className="github-repo-avatar" src={avatarImage} alt="image"></img>
+      )}
       {githubUserName && (
         <p>This is {`${githubUserName.trim()}'s`} Github repository</p>
       )}
       <ul className="github-repo-list">
-        <li className="github-repo-list-items">
+        <div className="github-repo-list-items">
           {githubReposList &&
             githubReposList.map(user => (
               <div className="github-repo-titles">
-                {user.name}
-                {user.description}
+                <a
+                  className="github-repo-url"
+                  href={user.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {user.name}
+                </a>
+                <li className="github-repo-description">{user.description}</li>
               </div>
             ))}
-        </li>
+        </div>
       </ul>
     </div>
   )
