@@ -6,6 +6,7 @@ import './App.css'
 const App = () => {
   const [githubUserName, setGithubUserName] = useState('')
   const [githubReposList, setGithubReposList] = useState('')
+  //   const [githubDescription, setGithubDescription] = useState('')
 
   const fetchData = useCallback(() => {
     fetch(githubData.baseURL, {
@@ -17,6 +18,8 @@ const App = () => {
       .then(data => {
         setGithubUserName(data.data.viewer.name)
         setGithubReposList(data.data.viewer.repositories.nodes)
+        // setGithubDescription ()
+        console.log(data.data.viewer.repositories.nodes)
       })
       .catch(error => {
         console.log(error)
@@ -37,7 +40,10 @@ const App = () => {
         <li className="github-repo-list-items">
           {githubReposList &&
             githubReposList.map(user => (
-              <div className="github-repo-titles">{user.name}</div>
+              <div className="github-repo-titles">
+                {user.name}
+                {user.description}
+              </div>
             ))}
         </li>
       </ul>
